@@ -52,7 +52,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.5}}
           >
-            Seorang mahasiswa Informatika dari Telkom University yang bersemangat dalam membangun solusi digital yang inovatif. Saya terpesona oleh bagaimana barisan kode dapat diubah menjadi pengalaman pengguna yang fungsional dan indah. Saat ini, saya fokus memperdalam keahlian di bidang Fullstack Development dan UI/UX Design.
+            An Informatics student from Telkom University, passionate about building innovative digital solutions. I am fascinated by how lines of code can be transformed into functional and beautiful user experiences. Currently, I am focused on deepening my skills in Fullstack Development and UI/UX Design.
           </motion.p>
            <motion.div
              initial={{ y: 50, opacity: 0 }}
