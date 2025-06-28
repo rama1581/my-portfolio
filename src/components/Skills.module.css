@@ -1,0 +1,70 @@
+.skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.skillHex {
+  position: relative;
+  width: 140px;
+  height: 160px;
+  background-color: var(--color-bg-variant);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.skillHexInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.skillHex::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--color-primary), var(--color-accent-cyan));
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  z-index: -1;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.skillHex:hover::before {
+  opacity: 1;
+}
+
+.skillHex:hover {
+  transform: scale(1.1);
+}
+
+.skillIcon {
+  font-size: 3rem;
+  color: var(--color-accent-cyan);
+  transition: var(--transition);
+}
+
+.skillName {
+  font-size: 0.9rem;
+  color: var(--color-white);
+  font-family: var(--font-mono);
+  transition: var(--transition);
+}
+
+.skillHex:hover .skillIcon,
+.skillHex:hover .skillName {
+  color: var(--color-bg);
+}

@@ -1,0 +1,25 @@
+:root {
+  /* Warna Inti */
+  --color-bg: #040c18; /* Latar belakang: Biru angkasa yang sangat gelap */
+  --color-bg-variant: #111827; /* Warna panel/kartu yang sedikit lebih terang */
+  --color-primary: #8a2be2; /* Aksen utama: BlueViolet, lebih dalam */
+  --color-accent-cyan: #00f5d4; /* Aksen sekunder: Cyan Neon Terang */
+  --color-white: #e5e7eb;
+  --color-light: #9ca3af;
+
+  /* Efek Glow & Shadow */
+  --neon-glow-primary: 0 0 5px var(--color-primary), 0 0 10px var(--color-primary);
+  --neon-glow-cyan: 0 0 5px var(--color-accent-cyan), 0 0 15px var(--color-accent-cyan), 0 0 25px rgba(0, 245, 212, 0.5);
+
+  /* Font */
+  --font-main: 'Poppins', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+
+  /* Transisi */
+  --transition: all 400ms ease;
+
+  /* Ukuran Kontainer */
+  --container-width-lg: 80%;
+  --container-width-md: 90%;
+  --container-width-sm: 94%;
+}

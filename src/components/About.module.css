@@ -1,0 +1,93 @@
+.aboutContainer {
+  display: grid;
+  grid-template-columns: 35% 50%;
+  gap: 15%;
+}
+
+.aboutImage {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 2rem;
+  background: linear-gradient(45deg, var(--color-primary), transparent);
+  display: grid;
+  place-items: center;
+}
+
+.aboutImage img {
+  border-radius: 2rem;
+  overflow: hidden;
+  transition: var(--transition);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aboutImage:hover img {
+  transform: scale(1.05);
+}
+
+.aboutCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.aboutCard {
+  background: rgba(79, 70, 229, 0.1);
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  transition: var(--transition);
+  backdrop-filter: blur(5px);
+  
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutCard:hover {
+  background: var(--color-bg-variant);
+  border-color: var(--color-primary-variant);
+  transform: translateY(-10px);
+}
+
+.aboutIcon {
+  color: var(--color-primary);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.aboutCard h5 {
+  font-size: 0.95rem;
+}
+
+.aboutCard small {
+  font-size: 0.7rem;
+  color: var(--color-light);
+}
+
+.aboutContent p {
+  margin-bottom: 2rem;
+  color: var(--color-light);
+}
+
+/* ... Media Queries ... */
+@media screen and (max-width: 1024px) {
+  .aboutContainer {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .aboutImage {
+    width: 50%;
+    margin: 2rem auto 4rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .aboutImage { width: 65%; margin: 0 auto 3rem; }
+  .aboutCards { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .aboutContent { text-align: center; }
+}
