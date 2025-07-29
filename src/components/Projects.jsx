@@ -7,6 +7,8 @@ import { FiExternalLink } from 'react-icons/fi';
 import IMG1 from '../assets/project1.png';
 import IMG2 from '../assets/project2.png';
 import IMG3 from '../assets/project3.png';
+import IMG4 from '../assets/project4.png';
+import IMG5 from '../assets/project5.png';
 
 const projectsData = [
   {
@@ -14,7 +16,7 @@ const projectsData = [
     image: IMG1,
     title: 'No Escape Game (Unity 3D)',
     description: 'First game project using Unity 3D, showcasing my skills in game development and design. Many Bugs, but I learned a lot.',
-    github: 'https://github.com/rama1581/No-Escape-Game',
+    github: 'https://rama1581.itch.io/no-escape-game',
   },
   {
     id: 2,
@@ -27,8 +29,24 @@ const projectsData = [
     id: 3,
     image: IMG3,
     title: 'FJB Tel-U(React Vite, Tailwind CSS, Firebase)',
-    description: 'A brief and catchy description of your project, highlighting its main purpose and achievement.',
+    description: 'A web application for buying and selling items within the Telkom University community, built with React Vite, Tailwind CSS, and Firebase for real-time data handling.',
     github: 'https://fjbtelu.vercel.app/',
+  },
+
+  {
+    id: 4,
+    image: IMG4,
+    title: 'Mie Tengah Malam Game (Unity 3D)',
+    description: 'An engaging game project developed using Unity 3D, focusing on gameplay mechanics and user experience.',
+    github: 'https://rama1581.itch.io/mie-tengah-malam',
+  },
+
+  {
+    id: 5,
+    image: IMG5,
+    title: 'Just Escape Game (Unity 3D)',
+    description: 'An immersive game project created with Unity 3D, emphasizing puzzle-solving and exploration.',
+    github: 'https://rama1581.itch.io/justescape',
   },
 ];
 
