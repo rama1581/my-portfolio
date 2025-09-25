@@ -7,6 +7,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import PageLoader from "./components/PageLoader.jsx";
 import './App.css';
 
 const App = () => {
@@ -21,6 +22,8 @@ const App = () => {
           <Skills />
           <Projects />
           <Contact />
+          <PageLoader />
+           <div className="app"></div>
         </main>
         <Footer />
       </div>
