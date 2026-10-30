@@ -3,51 +3,123 @@ import { Link } from 'react-scroll';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import styles from './Navbar.module.css';
 
+const navLinks = ['home', 'about', 'skills', 'projects', 'contact'];
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 30);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  const navLinks = ['home', 'about', 'skills', 'projects', 'contact'];
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isMobileMenuOpen]);
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  };
 
   return (
-    <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
-      <div className={`container ${styles.navContainer}`}>
-        <Link to="home" smooth={true} duration={500} className={styles.logo}>
-          Rama's Portfolio
+    <nav
+      className={`${styles.navbar} ${
+        isScrolled ? styles.scrolled : ''
+      }`}
+      aria-label="Main navigation"
+    >
+      <div className={styles.navContainer}>
+        <Link
+          to="home"
+          smooth
+          duration={500}
+          className={styles.logo}
+          onClick={closeMobileMenu}
+          aria-label="Muhammad Zidan Ramadhan, home"
+        >
+          <span className={styles.logoMark}>ZR.</span>
+          <span className={styles.logoText}>Muhammad Zidan Ramadhan</span>
         </Link>
-        <ul className={`${styles.navMenu} ${isMobileMenuOpen ? styles.active : ''}`}>
-          {navLinks.map(link => (
+
+        <button
+          type="button"
+          className={`${styles.mobileMenuIcon} ${
+            isMobileMenuOpen ? styles.menuOpen : ''
+          }`}
+          onClick={toggleMobileMenu}
+          aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="portfolio-navigation"
+        >
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
+        <ul
+          id="portfolio-navigation"
+          className={`${styles.navMenu} ${
+            isMobileMenuOpen ? styles.active : ''
+          }`}
+        >
+          {navLinks.map((link, index) => (
             <li key={link}>
               <Link
                 to={link}
-                smooth={true}
+                smooth
                 duration={500}
-                spy={true}
+                spy
+                offset={-85}
                 activeClass={styles.activeLink}
-                offset={-70}
+                className={styles.navLink}
                 onClick={closeMobileMenu}
               >
+                <span className={styles.navIndex}>
+                  0{index + 1}
+                </span>
                 {link.charAt(0).toUpperCase() + link.slice(1)}
               </Link>
             </li>
           ))}
         </ul>
-        <div className={styles.mobileMenuIcon} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
-        </div>
       </div>
     </nav>
   );

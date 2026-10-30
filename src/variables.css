@@ -1,25 +1,37 @@
+/* src/variables.css */
+
 :root {
-  /* Warna Inti */
-  --color-bg: #040c18; /* Latar belakang: Biru angkasa yang sangat gelap */
-  --color-bg-variant: #111827; /* Warna panel/kartu yang sedikit lebih terang */
-  --color-primary: #8a2be2; /* Aksen utama: BlueViolet, lebih dalam */
-  --color-accent-cyan: #00f5d4; /* Aksen sekunder: Cyan Neon Terang */
-  --color-white: #e5e7eb;
-  --color-light: #9ca3af;
+  /* Background */
+  --color-bg: #111111;
+  --color-bg-variant: #191919;
+  --color-surface: #1E1E1E;
 
-  /* Efek Glow & Shadow */
-  --neon-glow-primary: 0 0 5px var(--color-primary), 0 0 10px var(--color-primary);
-  --neon-glow-cyan: 0 0 5px var(--color-accent-cyan), 0 0 15px var(--color-accent-cyan), 0 0 25px rgba(0, 245, 212, 0.5);
+  /* Text */
+  --color-white: #F2F0EB;
+  --color-light: #A3A19C;
+  --color-text-muted: #777570;
 
-  /* Font */
+  /* Accent */
+  --color-primary: #D99A65;
+  --color-primary-variant: #D99A65;
+  --color-accent-cyan: #D99A65;
+
+  /* Borders */
+  --color-border: #30302E;
+
+  /* Shadows */
+  --neon-glow-primary: none;
+  --neon-glow-cyan: none;
+
+  /* Fonts */
   --font-main: 'Poppins', sans-serif;
   --font-mono: 'Fira Code', monospace;
 
-  /* Transisi */
-  --transition: all 400ms ease;
+  /* Transitions */
+  --transition: all 300ms ease;
 
-  /* Ukuran Kontainer */
+  /* Container */
   --container-width-lg: 80%;
   --container-width-md: 90%;
-  --container-width-sm: 94%;
+  --container-width-sm: 90%;
 }

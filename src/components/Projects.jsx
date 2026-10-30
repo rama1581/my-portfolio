@@ -1,83 +1,166 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import styles from './Projects.module.css';
-import { FaChrome, FaGithub, FaInternetExplorer } from 'react-icons/fa';
-import { FiExternalLink } from 'react-icons/fi';
-// Ganti dengan gambar proyek Anda di folder src/assets
+import { FiArrowUpRight, FiGithub } from 'react-icons/fi';
+
 import IMG1 from '../assets/project1.png';
 import IMG2 from '../assets/project2.png';
 import IMG3 from '../assets/project3.png';
-import IMG4 from '../assets/project4.png';
-import IMG5 from '../assets/project5.png';
 
 const projectsData = [
   {
-    id: 1,
+    id: '01',
     image: IMG1,
-    title: 'No Escape Game (Unity 3D)',
-    description: 'First game project using Unity 3D, showcasing my skills in game development and design. Many Bugs, but I learned a lot.',
-    github: 'https://rama1581.itch.io/no-escape-game',
+    title: 'USED',
+    category: 'GAME DEVELOPMENT',
+    technologies: ['Unity', 'C#', '3D'],
+    description:
+      'A first-person narrative game about loneliness, complicated friendships, and the feeling of being taken for granted. Built with Unity 3D, the experience focuses on environmental storytelling, everyday interactions, and emotionally driven scenes.',
+    links: [
+      {
+        label: 'Play on itch.io',
+        url: 'https://rama1581.itch.io/used',
+        type: 'external',
+      },
+    ],
   },
   {
-    id: 2,
+    id: '02',
     image: IMG2,
-    title: 'KOST IN(Java, Java Spring Boot)',
-    description: 'Web that provides information about boarding houses in Telkom University, built with Java and Spring Boot. This project was developed as part of the IF-46-03-G7 team.',
-    github: 'https://github.com/rama1581/IF-46-03-G7',
+    title: 'KOST IN',
+    category: 'WEB DEVELOPMENT',
+    technologies: ['Java', 'Spring Boot'],
+    description:
+      'A web application for discovering boarding-house information around Telkom University, developed collaboratively as part of the IF-46-03-G7 team.',
+    links: [
+      {
+        label: 'Source code',
+        url: 'https://github.com/rama1581/IF-46-03-G7',
+        type: 'github',
+      },
+    ],
   },
-   {
-    id: 3,
+  {
+    id: '03',
     image: IMG3,
-    title: 'FJB Tel-U(React Vite, Tailwind CSS, Firebase)',
-    description: 'A web application for buying and selling items within the Telkom University community, built with React Vite, Tailwind CSS, and Firebase for real-time data handling.',
-    github: 'https://fjbtelu.vercel.app/',
-  },
-
-  {
-    id: 4,
-    image: IMG4,
-    title: 'Mie Tengah Malam Game (Unity 3D)',
-    description: 'An engaging game project developed using Unity 3D, focusing on gameplay mechanics and user experience.',
-    github: 'https://rama1581.itch.io/mie-tengah-malam',
-  },
-
-  {
-    id: 5,
-    image: IMG5,
-    title: 'Just Escape Game (Unity 3D)',
-    description: 'An immersive game project created with Unity 3D, emphasizing puzzle-solving and exploration.',
-    github: 'https://rama1581.itch.io/justescape',
+    title: 'FJB Tel-U',
+    category: 'WEB APPLICATION',
+    technologies: ['React', 'Tailwind CSS', 'Firebase'],
+    description:
+      'A marketplace web application for the Telkom University community, designed to support buying and selling through a straightforward interface and Firebase-powered data handling.',
+    links: [
+      {
+        label: 'Live website',
+        url: 'https://fjbtelu.vercel.app/',
+        type: 'external',
+      },
+    ],
   },
 ];
 
 const Projects = () => {
-  return (
-    <section id="projects">
-      <h5 className="section-title">My Recent Work</h5>
-      <h2 className="section-header">Projects</h2>
+  const reduceMotion = useReducedMotion();
 
+  return (
+    <section id="projects" className={styles.projectsSection}>
       <div className={`container ${styles.projectsContainer}`}>
-        {projectsData.map((proj) => (
-          <motion.article
-            key={proj.id}
-            className={styles.projectItem}
-            initial={{ y: 100, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className={styles.projectItemImage}>
-              <img src={proj.image} alt={proj.title} />
-            </div>
-            <h3>{proj.title}</h3>
-            <p className={styles.projectDescription}>{proj.description}</p>
-            <div className={styles.projectItemCta}>
-              <a href={proj.github} className="btn" target="_blank" rel="noopener noreferrer">
-                <FaChrome /> Try It
-              </a>
-            </div>
-          </motion.article>
-        ))}
+        <motion.header
+          className={styles.sectionHeading}
+          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: reduceMotion ? 0 : 0.6 }}
+        >
+          <span className={styles.sectionEyebrow}>
+            03 / SELECTED WORK
+          </span>
+
+          <h2 className={styles.sectionTitle}>
+            Things I've
+            <br />
+            <span>put together.</span>
+          </h2>
+
+          <p className={styles.sectionDescription}>
+            A selection of projects I've built, explored, and learned
+            from along the way.
+          </p>
+        </motion.header>
+
+        <div className={styles.projectsList}>
+          {projectsData.map((project, index) => (
+            <motion.article
+              key={project.id}
+              className={styles.projectItem}
+              initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.08 }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.55,
+                delay: reduceMotion ? 0 : (index % 2) * 0.08,
+              }}
+            >
+              <div className={styles.projectImageWrapper}>
+                <img
+                  className={styles.projectImage}
+                  src={project.image}
+                  alt={`${project.title} project preview`}
+                  loading="lazy"
+                />
+
+                <span className={styles.projectImageIndex}>
+                  {project.id}
+                </span>
+              </div>
+
+              <div className={styles.projectContent}>
+                <div className={styles.projectMeta}>
+                  <span className={styles.projectCategory}>
+                    {project.category}
+                  </span>
+
+                  <span className={styles.projectTechnologies}>
+                    {project.technologies.join(' · ')}
+                  </span>
+                </div>
+
+                <h3 className={styles.projectTitle}>
+                  {project.title}
+                </h3>
+
+                <p className={styles.projectDescription}>
+                  {project.description}
+                </p>
+
+                <div className={styles.projectLinks}>
+                  {project.links.map((link) => (
+                    <a
+                      key={link.url}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.projectLink}
+                      aria-label={`${link.label}: ${project.title}`}
+                    >
+                      {link.type === 'github' ? (
+                        <FiGithub aria-hidden="true" />
+                      ) : (
+                        <FiArrowUpRight aria-hidden="true" />
+                      )}
+
+                      <span>{link.label}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        <footer className={styles.projectsFooter}>
+          <span>SELECTED PROJECTS</span>
+          <span>LEARNING BY BUILDING.</span>
+        </footer>
       </div>
     </section>
   );

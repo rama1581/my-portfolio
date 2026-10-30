@@ -1,15 +1,39 @@
+/* src/components/Skeleton.module.css */
+
 .skeleton {
   position: relative;
   overflow: hidden;
-  background: #151a25;
-  border-radius: 12px;
-  min-height: 1rem;
+  border-radius: 8px;
+  background: #191919;
+  isolation: isolate;
 }
+
 .skeleton::after {
-  content: "";
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(242, 240, 235, 0.045) 45%,
+    rgba(242, 240, 235, 0.075) 50%,
+    rgba(242, 240, 235, 0.045) 55%,
+    transparent 80%
+  );
+  content: '';
   transform: translateX(-100%);
-  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.06) 50%, rgba(255,255,255,0) 100%);
-  animation: shimmer 1.2s infinite;
+  animation: skeletonShimmer 1.8s ease-in-out infinite;
 }
-@keyframes shimmer { 100% { transform: translateX(100%); } }
+
+@keyframes skeletonShimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after {
+    animation: none;
+    transform: none;
+    background: rgba(242, 240, 235, 0.035);
+  }
+}
