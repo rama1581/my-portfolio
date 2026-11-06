@@ -20,45 +20,75 @@ import {
   SiGithub,
   SiAndroidstudio,
   SiGit,
+  SiLaravel,
+  SiFirebase,
+  SiPhp,
+  SiHtml5,
+  SiCss3,
+  SiBlender,
+  SiCloudflare,
+  SiLinux,
 } from 'react-icons/si';
+
+import { FaJava } from 'react-icons/fa';
 
 const skillGroups = [
   {
     number: '01',
     title: 'Development',
-    description: 'Languages & application development',
+    description: 'Programming languages & application development',
     skills: [
       { icon: <SiGo />, name: 'Go' },
       { icon: <SiCplusplus />, name: 'C++' },
+      { icon: <FaJava />, name: 'Java' },
       { icon: <SiJavascript />, name: 'JavaScript' },
       { icon: <SiPython />, name: 'Python' },
+      { icon: <SiPhp />, name: 'PHP' },
+      { icon: <SiHtml5 />, name: 'HTML5' },
+      { icon: <SiCss3 />, name: 'CSS3' },
       { icon: <SiReact />, name: 'React' },
       { icon: <SiNextdotjs />, name: 'Next.js' },
       { icon: <SiFlutter />, name: 'Flutter' },
-      { icon: <SiSpringboot />, name: 'Spring Boot' },
-      { icon: <SiNodedotjs />, name: 'Node.js' },
       { icon: <SiUnity />, name: 'Unity' },
     ],
   },
   {
     number: '02',
+    title: 'Backend & Data',
+    description: 'Server-side development & data management',
+    skills: [
+      { icon: <SiLaravel />, name: 'Laravel' },
+      { icon: <SiSpringboot />, name: 'Spring Boot' },
+      { icon: <SiNodedotjs />, name: 'Node.js' },
+      { icon: <SiMysql />, name: 'MySQL' },
+      { icon: <SiSupabase />, name: 'Supabase' },
+      { icon: <SiFirebase />, name: 'Firebase' },
+    ],
+  },
+  {
+    number: '03',
     title: 'Tools & Platforms',
-    description: 'Development workflow & interface design',
+    description: 'Development workflow & creative tools',
     skills: [
       { icon: <SiGit />, name: 'Git' },
       { icon: <SiGithub />, name: 'GitHub' },
       { icon: <SiFigma />, name: 'Figma' },
       { icon: <SiAndroidstudio />, name: 'Android Studio' },
       { icon: <SiTailwindcss />, name: 'Tailwind CSS' },
+      { icon: <SiBlender />, name: 'Blender' },
     ],
   },
   {
-    number: '03',
-    title: 'Data & Backend',
-    description: 'Databases & backend services',
+    number: '04',
+    title: 'Infrastructure & Networking',
+    description: 'Network administration & infrastructure',
     skills: [
-      { icon: <SiMysql />, name: 'MySQL' },
-      { icon: <SiSupabase />, name: 'Supabase' },
+      { icon: <SiCloudflare />, name: 'Cloudflare' },
+      { icon: <SiLinux />, name: 'Linux' },
+      { icon: null, name: 'Networking' },
+      { icon: null, name: 'Firewall' },
+      { icon: null, name: 'DNS' },
+      { icon: null, name: 'HTTPS' },
     ],
   },
 ];
@@ -77,7 +107,7 @@ const Skills = () => {
           transition={{ duration: reduceMotion ? 0 : 0.6 }}
         >
           <span className={styles.sectionEyebrow}>
-            02 / CAPABILITIES
+            03 / CAPABILITIES
           </span>
 
           <h2 className={styles.sectionTitle}>
@@ -87,8 +117,9 @@ const Skills = () => {
           </h2>
 
           <p className={styles.sectionDescription}>
-            Technologies I've explored and used to bring ideas
-            into working applications.
+            Technologies and tools I've explored through building
+            applications, developing games, and working with
+            infrastructure.
           </p>
         </motion.header>
 
@@ -122,9 +153,11 @@ const Skills = () => {
                     className={styles.skillItem}
                     key={skill.name}
                   >
-                    <span className={styles.skillIcon}>
-                      {skill.icon}
-                    </span>
+                    {skill.icon && (
+                      <span className={styles.skillIcon}>
+                        {skill.icon}
+                      </span>
+                    )}
 
                     <span className={styles.skillName}>
                       {skill.name}

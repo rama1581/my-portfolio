@@ -6,6 +6,7 @@ import { FiArrowUpRight, FiGithub } from 'react-icons/fi';
 import IMG1 from '../assets/project1.png';
 import IMG2 from '../assets/project2.png';
 import IMG3 from '../assets/project3.png';
+import IMG4 from '../assets/project4.png';
 
 const projectsData = [
   {
@@ -56,6 +57,22 @@ const projectsData = [
       },
     ],
   },
+  {
+    id: '04',
+    image: IMG4,
+    title: 'ICT Taruna Bakti',
+    category: 'WEB DEVELOPMENT',
+    technologies: ['React', 'Laravel', 'Web Infrastructure'],
+    description:
+      'A school information website developed as part of an internship at Yayasan Taruna Bakti, involving web development, backend integration, and website infrastructure management.',
+    links: [
+      {
+        label: 'Visit website',
+        url: 'https://ict.tarunabakti.or.id/',
+        type: 'external',
+      },
+    ],
+  },
 ];
 
 const Projects = () => {
@@ -72,7 +89,7 @@ const Projects = () => {
           transition={{ duration: reduceMotion ? 0 : 0.6 }}
         >
           <span className={styles.sectionEyebrow}>
-            03 / SELECTED WORK
+            04 / SELECTED WORK
           </span>
 
           <h2 className={styles.sectionTitle}>
